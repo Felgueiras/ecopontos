@@ -61,7 +61,7 @@ self.addEventListener('pushsubscriptionchange', function (event) {
 var doCache = true;
 
 // Name our cache
-var CACHE_NAME = 'sharing-lisboa';
+var CACHE_NAME = 'ecopontos';
 
 // Delete old caches that are not our current one!
 self.addEventListener("activate", event => {
