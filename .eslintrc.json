@@ -1,0 +1,58 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true
+    },
+    "globals": {
+        "runtime": true
+    },
+    "extends": ["plugin:react/recommended", "eslint:recommended"],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": [
+            "off",
+            "tab"
+        ],
+        "linebreak-style": [
+            "off",
+            "windows"
+        ],
+        "no-unused-vars": ["off", {
+            "vars": "all",
+            "args": "after-used",
+            "ignoreRestSiblings": false,
+            "varsIgnorePattern": "result"
+        }],
+        "no-console": "off",
+        "no-undef": "error",
+        "no-extra-boolean-cast": "warn",
+        "no-inner-declarations": "off",
+        "no-useless-escape": "off",
+        "no-debugger": "warn",
+        "quotes": [
+            "off",
+            "single"
+        ],
+        "react/prop-types": ["off", {}],
+        "react/jsx-key": ["off", {}],
+        "react/no-deprecated": "warn",
+        "react/no-direct-mutation-state": "warn",
+        "react/display-name": "warn",
+        "react/no-unescaped-entities": "off",
+        "semi": [
+            "off",
+            "always"
+        ]
+    }
+}

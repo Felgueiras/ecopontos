@@ -1,0 +1,31 @@
+:global(.panel-item)
+{
+  text-align: center;
+}
+
+:global(.panel-title)
+{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+:global(.panel-remaining)
+{
+  font-size: 12px;
+}
+
+:global(.to-left){
+  float: left;
+}
+
+:global(.cause-name){
+  font-size: 12px;
+  display: inline;
+}
+
+:global(.cause-tokens){
+  font-size: 12px;
+  font-weight: bold;
+  display: inline;
+  font-weight: bold;
+}

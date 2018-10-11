@@ -1,0 +1,10 @@
+{
+    "src": "./src/",
+    "dist": "./build/",
+    "jsBudgetLimit": 200,
+    "jsBudgetPath": ".//*.js",
+    "manifestPath": "./C:\\Users\\p058076\\Desktop\\dev-dsm-app\\build\\manifest.json",
+    "readableAssets": {
+        "./src/assets/": "/assets/"
+    }
+}
