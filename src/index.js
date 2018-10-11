@@ -21,39 +21,15 @@ import { PersistGate } from 'redux-persist/integration/react';
 import './css/index.css';
 
 
-// UI components
-import SplashScreen from './scenes/WelcomeScreen/SplashScreen'
-import InfoScreens from './scenes/WelcomeScreen/InfoScreens'
-import Dashboard from './scenes/Dashboard/Dashboard'
-import Login from './scenes/Account/scenes/Login';
-import Settings from './scenes/Settings/Settings'
-import TermsConditions from './scenes/Dashboard/scenes/help/TermsConditions'
-import SettingsDone from './scenes/Settings/scenes/SettingsDone'
-
-
-
-import logo_gfit from './img/contas_externas/google_fit.png';
-
 
 import {
   HashRouter,
   Switch,
   Route,
 } from 'react-router-dom'
-import ResetAccount from './scenes/WelcomeScreen/ResetAccount';
-import History from './scenes/Dashboard/scenes/history/History';
 import MapComponent from './components/MapComponent';
 import Report from './components/Report';
 
-
-
-const SetupRoutes = () => (
-  <Switch>
-    <Route exact path='/setup' component={Settings} />
-    <Route exact path='/setup/terms' component={TermsConditions} />
-    <Route path='/setup/done' component={SettingsDone} />
-  </Switch>
-)
 
 const Main = (logged) => (
   <main>

@@ -14,7 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { EcopontoInfo } from "./EcopontoInfo";
 import { EPS } from "./EPS";
 
-import closeIcon from '../img/tour/fechar.svg'
+import closeIcon from '@material-ui/icons/Close'
 
 
 class EcopontoDialog extends React.Component {
