@@ -71,9 +71,13 @@ class MapComponent extends React.Component {
             markers = this.filterByService(filterBy)
         }
 
+        // const topBarHeight = window.jQuery(".top-bar").height();
+        const screenHeight = window.jQuery("#root").height();
+        let mapHeight = screenHeight - 56 - 20;
+
         return (
             <div>
-                <AppBar position="static">
+                <AppBar position="static" className="top-bar">
                     <Toolbar>
                         {/* <IconButton
                             onClick={this.toggleDrawer}
@@ -102,7 +106,7 @@ class MapComponent extends React.Component {
                     markers={markers}
                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyBKaXLrKOJgX0EWaiZ0cZ92T7175z4UQ30"
                     loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={<div style={{ height: `500px` }} />}
+                    containerElement={<div style={{ height: `${mapHeight}px` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
                 />
             </div>
