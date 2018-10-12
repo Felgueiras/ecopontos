@@ -84,7 +84,7 @@ class MapComponent extends React.Component {
                         <Typography
                             variant="title"
                             color="inherit" >
-                            Ecopontos
+                            Ecopontos@Águeda
                         </Typography>
                     </Toolbar>
                 </AppBar>

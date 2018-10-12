@@ -2,16 +2,16 @@
   "short_name": "Ecopontos@Águeda",
   "name": "Ecopontos@Águeda",
   "icons": [{
-      "src": "icon192.png",
+      "src": "icon-192x192.png",
       "sizes": "144x144 64x64 32x32 24x24 16x16",
       "type": "image/png"
     },
     {
-      "src": "icon192.png",
+      "src": "icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     }, {
-      "src": "icon512.png",
+      "src": "icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
