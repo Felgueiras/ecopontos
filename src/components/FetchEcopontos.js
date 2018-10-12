@@ -20,7 +20,7 @@ class FetchEcopontos extends Component {
     fetchKml = () => {
 
         return new Promise((resolve, reject) => {
-            const kml = 'http://ckan.sig.cm-agueda.pt/dataset/e5738237-3a7c-4a81-97dc-9c2dc604f7cd/resource/af51f772-fd79-4518-bdbc-064b6da2d8ca/download/ecopontos.kml'
+            const kml = 'https://raw.githubusercontent.com/Felgueiras/ecopontos/master/public/ecopontos.kml';
             axios.get(kml)
                 .then(res => {
                     var parser, xmlDoc, elementDoc;
