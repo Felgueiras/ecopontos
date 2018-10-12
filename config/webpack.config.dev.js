@@ -260,18 +260,18 @@ module.exports = {
   performance: {
     hints: false,
   },
-  externals: {
-    Config: JSON.stringify(
-      process.env.NODE_ENV === "production"
-        ? {
-          serverUrl: "hysmart.rethink.ptinovacao.pt",
-          rethinkUrl: 'https://hysmart.rethink.ptinovacao.pt/.well-known/runtime/rethink.js'
-        }
-        : {
-          serverUrl: "localhost",
-          rethinkUrl: 'https://catalogue.localhost/.well-known/runtime/rethink.js'
+  // externals: {
+  //   Config: JSON.stringify(
+  //     process.env.NODE_ENV === "production"
+  //       ? {
+  //         serverUrl: "hysmart.rethink.ptinovacao.pt",
+  //         rethinkUrl: 'https://hysmart.rethink.ptinovacao.pt/.well-known/runtime/rethink.js'
+  //       }
+  //       : {
+  //         serverUrl: "localhost",
+  //         rethinkUrl: 'https://catalogue.localhost/.well-known/runtime/rethink.js'
 
-        }
-    )
-  }
+  //       }
+  //   )
+  // }
 };

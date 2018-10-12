@@ -334,11 +334,11 @@ module.exports = {
     tls: "empty",
     child_process: "empty"
   },
-  externals: {
-    Config: JSON.stringify({
-      serverUrl: "hysmart.rethink.ptinovacao.pt",
-      rethinkUrl: 'https://hysmart.rethink.ptinovacao.pt/.well-known/runtime/rethink.js'
-    }
-    )
-  }
+  // externals: {
+  //   Config: JSON.stringify({
+  //     serverUrl: "hysmart.rethink.ptinovacao.pt",
+  //     rethinkUrl: 'https://hysmart.rethink.ptinovacao.pt/.well-known/runtime/rethink.js'
+  //   }
+  //   )
+  // }
 };
