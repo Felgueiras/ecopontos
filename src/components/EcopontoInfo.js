@@ -9,6 +9,7 @@ import { withRouter } from "react-router-dom";
 
 export const EcopontoInfo = withRouter((props) => {
 
+
     const report = () => {
         console.log('report');
         props.history.push('/report/' + props.ecoponto.ref);
@@ -69,7 +70,6 @@ const EcopontoServices = ({ services }) => {
         </React.Fragment>
     )
 }
-
 
 
 EcopontoInfo.propTypes = {

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+import { connect } from "react-redux";
 import { GoogleMap, Marker, withGoogleMap, withScriptjs, KmlLayer } from 'react-google-maps';
 import { EcoServices } from './EcoServices';
 import Ecoponto from './EcopontoDialog';
-import { ecopontos } from './ecopontos';
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import Search from './Search';
 
 
+// icons
+import ExpandMore from '@material-ui/icons/ExpandMore'
+import ExpandLess from '@material-ui/icons/ExpandLess'
 
 class SingleMarker extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false
+            open: false,
         };
     }
 
@@ -49,10 +52,8 @@ class SingleMarker extends React.Component {
     }
 }
 
-
-
 class MapWithEcopontosReact extends Component {
-    
+
     state = {
         user: { lat: 40, lng: 10 }
     }
@@ -63,16 +64,11 @@ class MapWithEcopontosReact extends Component {
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition((position) => _this.setState({ user: { lat: position.coords.latitude, lng: position.coords.longitude } }));
         }
-
-        // TODO: fetch ecopontos.kml
-        // axios.get(`https://jsonplaceholder.typicode.com/users`)
-        //     .then(res => {
-        //         const persons = res.data;
-        //         this.setState({ persons });
-        //     })
     }
 
     render() {
+
+        const { user } = this.state;
         return (
             <GoogleMap
                 defaultZoom={16}
@@ -89,6 +85,11 @@ class MapWithEcopontosReact extends Component {
                         </React.Fragment>
                     );
                 })}
+                {/* user marker */}
+                <Marker
+                    position={user}
+                // onClick={() => handleMarkerClick(marker)}
+                />
 
             </GoogleMap>
         )
@@ -98,9 +99,15 @@ class MapWithEcopontosReact extends Component {
 
 const MapWithEcopontos = withScriptjs(withGoogleMap(MapWithEcopontosReact));
 
-export default class MapComponent extends React.Component {
+class MapComponent extends React.Component {
+
+    state = {
+        filtering: false
+    }
 
     filterByService(display) {
+
+        const { ecopontos } = this.props;
 
         // every one
         let ecosToReturn = ecopontos.slice();
@@ -124,8 +131,14 @@ export default class MapComponent extends React.Component {
         return ecosToReturn;
     }
 
+    toggleSearch = () => {
+        let { filtering } = this.state;
+        this.setState({ filtering: !filtering });
+    }
+
     render() {
-        const { display } = this.props;
+        const { display, ecopontos } = this.props;
+        const { filtering } = this.state;
         let markers = display ? this.filterByService(display) : ecopontos;
         return (
             <div>
@@ -144,6 +157,16 @@ export default class MapComponent extends React.Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
+                {filtering ? (
+                    <React.Fragment>
+                        <Search handle={(filter) => this.setState({ display: filter })} />
+                        <ExpandLess className="text-center" onClick={this.toggleSearch} />
+                    </React.Fragment>
+
+
+                ) : (
+                        <ExpandMore className="text-center" onClick={this.toggleSearch} />
+                    )}
                 <MapWithEcopontos
                     markers={markers}
                     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyBKaXLrKOJgX0EWaiZ0cZ92T7175z4UQ30"
@@ -156,3 +179,10 @@ export default class MapComponent extends React.Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        ecopontos: state.ecopontos
+    };
+};
+
+export default connect(mapStateToProps, null)(MapComponent);

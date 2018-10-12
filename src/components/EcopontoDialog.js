@@ -12,10 +12,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import green from '@material-ui/core/colors/green';
 import { withStyles } from '@material-ui/core/styles';
 import { EcopontoInfo } from "./EcopontoInfo";
-import { EPS } from "./EPS";
 
-import closeIcon from '@material-ui/icons/Close'
-
+// icons
+import Close from '@material-ui/icons/Close'
 
 class EcopontoDialog extends React.Component {
   constructor(props) {
@@ -201,7 +200,7 @@ class EcopontoDialog extends React.Component {
                 <p className="shop-name" style={{ padding: '10px 0' }}>{ecoponto.name}</p>
               </div>
               <div className="col-2 text-center">
-                <img src={closeIcon} alt='' className="text-center inline-block icon-24" onClick={this.props.close} />
+                <Close className="text-center inline-block icon-24" onClick={this.props.close} />
               </div>
             </div>
             <div className="col" style={{ padding: '0px', marginTop: '10px' }}>
@@ -218,11 +217,11 @@ class EcopontoDialog extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    wallet: state.wallet,
-    transactions: state.wallet.transactions,
-    bonus: state.bonus,
-    position: state.position,
-    shops: state.shops
+    // wallet: state.wallet,
+    // transactions: state.wallet.transactions,
+    // bonus: state.bonus,
+    // position: state.position,
+    // shops: state.shops
   };
 };
 

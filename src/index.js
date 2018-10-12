@@ -27,14 +27,14 @@ import {
   Switch,
   Route,
 } from 'react-router-dom'
-import MapComponent from './components/MapComponent';
 import Report from './components/Report';
+import App from './App';
 
 
 const Main = (logged) => (
   <main>
     <Switch>
-      <Route exact path="/" component={MapComponent} />
+      <Route exact path="/" component={App} />
       <Route path="/report/:id" component={Report} />
     </Switch>
   </main>
