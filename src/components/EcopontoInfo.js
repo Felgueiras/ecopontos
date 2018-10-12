@@ -10,7 +10,12 @@ const EcopontoInfo = withRouter((props) => {
 
     const report = () => {
         console.log('report');
-        props.history.push('/report/' + props.ecoponto.ref);
+        props.history.push('/report/' + props.ecoponto.fid);
+    }
+
+    const navigate = () => {
+        console.log('navigate');
+        props.history.push('/navigate/' + props.ecoponto.fid);
     }
 
 
@@ -35,13 +40,24 @@ const EcopontoInfo = withRouter((props) => {
             <EcopontoServices
                 ecoponto={props.ecoponto}
             />
-            <Button
-                onClick={report}
-                variant="contained"
-                color="secondary"
-            >
-                reportar problema
+            <div className="text-center">
+                <Button
+                    style={{ display: 'block' }}
+                    onClick={report}
+                    variant="contained"
+                    color="secondary"
+                >
+                    reportar problema
                 </Button>
+                <Button
+                    style={{ display: 'block' }}
+                    onClick={navigate}
+                    variant="contained"
+                    color="secondary"
+                >
+                    navegar
+                </Button>
+            </div>
         </React.Fragment>
     )
 })

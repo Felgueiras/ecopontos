@@ -2,9 +2,11 @@ import { EPS } from "./EPS";
 
 
 export const getEcopontoByKey = (key) => {
-    let ret = ""
+    let ret = "";
     ecopontos.forEach(ecoponto => {
-        if (ecoponto.ref === key) {
+        console.log(ecoponto);
+        
+        if (ecoponto.fid === key) {
             ret = ecoponto;
         }
     });

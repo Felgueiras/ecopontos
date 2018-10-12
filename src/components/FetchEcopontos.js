@@ -65,6 +65,7 @@ class FetchEcopontos extends Component {
                         }
                     }
                     ecoponto.propriedad = propriedad;
+                    ecoponto.fid = fid;
                     ecoponto.vidrao = checkYes(vidrao);
                     ecoponto.papelao = checkYes(papelao);
                     ecoponto.embalao = checkYes(embalao);

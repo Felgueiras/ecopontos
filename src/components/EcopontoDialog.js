@@ -234,7 +234,7 @@ const styles = {
   },
   dialogRoot: {
     top: 'unset',
-    marginBottom: '56px!important'
+    marginBottom: '0px!important'
   },
   paper: {
     boxShadow: 'unset !important',

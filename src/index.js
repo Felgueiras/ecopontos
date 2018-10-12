@@ -28,6 +28,7 @@ import {
   Route,
 } from 'react-router-dom'
 import Report from './components/Report';
+import Navigate from './components/Navigate';
 import App from './App';
 
 
@@ -36,6 +37,7 @@ const Main = (logged) => (
     <Switch>
       <Route exact path="/" component={App} />
       <Route path="/report/:id" component={Report} />
+      <Route path="/navigate/:id" component={Navigate} />
     </Switch>
   </main>
 );

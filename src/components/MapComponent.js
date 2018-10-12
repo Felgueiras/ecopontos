@@ -72,7 +72,7 @@ class MapComponent extends React.Component {
         }
 
         console.log(markers.length);
-        
+
 
         // const topBarHeight = window.jQuery(".top-bar").height();
         const screenHeight = window.jQuery("#root").height();
@@ -97,14 +97,18 @@ class MapComponent extends React.Component {
                 </AppBar>
                 {filtering ? (
                     <React.Fragment>
-                        <Search
-                            filters={filterBy}
-                            handle={(filter) => this.setState({ filterBy: filter })}
-                        />
-                        <ExpandLess className="text-center" onClick={this.toggleSearch} />
+                        <div className="text-center">
+                            <Search
+                                filters={filterBy}
+                                handle={(filter) => this.setState({ filterBy: filter })}
+                            />
+                            <ExpandLess onClick={this.toggleSearch} />
+                        </div>
                     </React.Fragment>
                 ) : (
-                        <ExpandMore className="text-center" onClick={this.toggleSearch} />
+                        <div className="text-center">
+                            <ExpandMore onClick={this.toggleSearch} />
+                        </div>
                     )}
                 <MapWithEcopontos
                     markers={markers}

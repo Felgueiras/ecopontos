@@ -2,6 +2,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { withKnobs, button } from '@storybook/addon-knobs/react';
 import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
+import { MapWithADirectionsRenderer } from '../src/components/MapWithADirectionsRenderer'
 
 
 
@@ -96,6 +97,12 @@ storiesOf('Ecopontos/mapa', module)
     .add('mapa (vidrão)', () => (
         <MapComponent
             display={{ vidrao: true }} />
+    ))
+    .add('mapa (direções)', () => (
+        <MapWithADirectionsRenderer
+            origin={{ lat: 41.8507300, lng: -87.6512600 }}
+            destination={{ lat: 41.8525800, lng: -87.6514100 }}
+        />
     ))
     .add('mapa (vidrão + papelao)', () => (
         <MapComponent

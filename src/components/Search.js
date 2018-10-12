@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { FormControl, Button, InputLabel, Input, Select, MenuItem, Checkbox, FormControlLabel } from '@material-ui/core';
 import { EcoServices } from './EcoServices';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
 
-export default class Search extends Component {
+
+class Search extends Component {
 
     state = this.props.filters || {};
 
@@ -36,6 +38,9 @@ export default class Search extends Component {
 
     render() {
 
+        const classes = this.props.classes;
+
+
         let _this = this;
 
         return (
@@ -59,14 +64,16 @@ export default class Search extends Component {
 
                     </Select>
                 </FormControl> */}
-                <FormControl className="wrapper">
+                <FormControl className="wrapper" style={{marginTop: '10px'}}>
                     {/* <InputLabel htmlFor="age-simple">Do que está à procura?</InputLabel> */}
                     {EcoServices.services.map(function (item, i) {
                         return (
                             <FormControlLabel
+                                classes={{ root: classes.label }}
                                 className="box"
                                 control={
                                     <Checkbox
+                                        classes={{ root: classes.root }}
                                         color="primary"
                                         checked={_this.checkEnabled(item)}
                                         onChange={_this.handleChange(item.key)}
@@ -98,3 +105,16 @@ Search.propTypes = {
     handle: PropTypes.func
 
 }
+
+const styles = {
+    root: {
+        paddingTop: '0px !important',
+        paddingBottom: '0px !important',
+    },
+    label: {
+        margin: '0px !important',
+        paddingBottom: '0px !important',
+    }
+};
+
+export default withStyles(styles)(Search);
