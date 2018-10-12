@@ -94,7 +94,7 @@ class FetchEcopontos extends Component {
                 {this.state.ready ? (
                     <MapComponent />
                 ) : (
-                        <p>Not ready</p>
+                        <p>A carregar</p>
                     )}
             </React.Fragment>
         )
