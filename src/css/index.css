@@ -867,7 +867,7 @@ body {
 
 
   /* ecopontos */
-:global(.wrapper-bck) {
+:global(.wrapper) {
   display: grid !important;
   grid-template-columns: 50% 50%;
   grid-gap: 10px;
