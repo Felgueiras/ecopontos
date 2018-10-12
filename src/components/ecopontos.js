@@ -31,16 +31,6 @@ export const ecopontos = [
             lat: 40.5739914,
             lng: -8.445852799999999
         }
-    },
-    {
-        name: 'Ecoponto 3',
-        entity: 'ERSUC',
-        ref: 'c',
-        services: new EPS(false, true),
-        location: {
-            lat: 40.5739914,
-            lng: -8.445852799999999
-        }
     }
 ];
 

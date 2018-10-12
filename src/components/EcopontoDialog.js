@@ -11,7 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import green from '@material-ui/core/colors/green';
 import { withStyles } from '@material-ui/core/styles';
-import { EcopontoInfo } from "./EcopontoInfo";
+import EcopontoInfo  from "./EcopontoInfo";
 
 // icons
 import Close from '@material-ui/icons/Close'

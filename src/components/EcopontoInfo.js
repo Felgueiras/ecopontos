@@ -3,28 +3,37 @@ import PropTypes from 'prop-types'
 import { EcoServices } from './EcoServices';
 import { Button } from '@material-ui/core';
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import GPSutils from '../GPSutils';
 
-
-
-
-export const EcopontoInfo = withRouter((props) => {
-
+const EcopontoInfo = withRouter((props) => {
 
     const report = () => {
         console.log('report');
         props.history.push('/report/' + props.ecoponto.ref);
     }
 
-    const { name, services, entity } = props.ecoponto;
+
+    const { lat: userLat, lng: userLng } = props.userLocation;
+
+
+    const { name, propriedad, lat, lng } = props.ecoponto;
+
+    let distance = GPSutils.getDifferenceBetweenGPSCoordinates(userLat, userLng, Number(lat), Number(lng));
+    distance = Math.floor(distance);
+    if (distance <= 1000) {
+        distance += ' m';
+    }
+    else {
+        distance = Math.floor(distance * 10 / 1000) / 10 + ' km';
+    }
+
     return (
         <React.Fragment>
-            <p>{name}</p>
-            {/* <p>{`${lat}-${lng}`}</p> */}
-            {/* TODO: distance */}
-            <p>Está a 100 m de distância</p>
-            <p>{`Entidade: ${entity}`}</p>
+            <p>Está a {distance} de distância</p>
+            <p>{`Entidade: ${propriedad}`}</p>
             <EcopontoServices
-                services={services}
+                ecoponto={props.ecoponto}
             />
             <Button
                 onClick={report}
@@ -34,37 +43,35 @@ export const EcopontoInfo = withRouter((props) => {
                 reportar problema
                 </Button>
         </React.Fragment>
-
     )
 })
 
 
-const EcopontoServices = ({ services }) => {
-    // const { vidrao, eletrao } = services;
+const EcopontoServices = ({ ecoponto }) => {
 
     const getServices = () => {
         let toReturn = [];
-        for (var property in services) {
-            if (services.hasOwnProperty(property)) {
-                if (services[property]) {
-                    toReturn.push(EcoServices.getNameForService(property));
-                }
+
+        EcoServices.services.forEach(service => {
+            if (ecoponto[service.key]) {
+                toReturn.push(service);
             }
-        }
+        });
         return toReturn;
     }
     return (
         <React.Fragment>
             <p>Serviços disponíveis:</p>
             {
-                getServices().map((partner) => (
-                    <div>
-                        <p>{partner}</p>
-                        {/* <img src={partner} alt='' style={{
-                            maxWidth: '100%',
-                            maxHeight: '100%'
-                        }} /> */}
-                    </div>
+                getServices().map((service) => (
+                    <React.Fragment>
+                        {/* <p>{service.name}</p> */}
+                        <img src={service.icon} alt='' style={{
+                            height: '50px',
+                            width: 'auto',
+                            display: 'inline'
+                        }} />
+                    </React.Fragment>
                 ))
             }
         </React.Fragment>
@@ -72,6 +79,17 @@ const EcopontoServices = ({ services }) => {
 }
 
 
+
+
 EcopontoInfo.propTypes = {
     ecoponto: PropTypes.object.isRequired,
 }
+
+const mapStateToProps = state => {
+    return {
+        userLocation: state.userLocation
+    };
+};
+
+export default connect(mapStateToProps, null)(EcopontoInfo);
+
