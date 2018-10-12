@@ -6,16 +6,14 @@ import PropTypes from 'prop-types';
 
 export default class Search extends Component {
 
-    state = {
-        topic: null,
-        searchEnabled: false
-    };
+    state = this.props.filters || {};
 
     handleChange = name => event => {
         let stateAux = this.state;
         stateAux[name] = event.target.checked;
         this.setState({ [name]: event.target.checked, searchEnabled: true });
         this.props.handle(stateAux);
+        console.log(stateAux);
     };
 
     filter = () => {
@@ -23,11 +21,23 @@ export default class Search extends Component {
         console.log('filter');
     }
 
+    checkEnabled = (service) => {
+        const { filters } = this.props;
+        let checked = false;
+
+        for (var property in filters) {
+            if (filters.hasOwnProperty(property)) {
+                if (service.key === property && filters[property])
+                    checked = true;
+            }
+        }
+        return checked;
+    }
+
     render() {
 
         let _this = this;
 
-        const { searchEnabled } = this.state;
         return (
             <div className="text-center">
                 {/* <FormControl className="full-width">
@@ -58,7 +68,7 @@ export default class Search extends Component {
                                 control={
                                     <Checkbox
                                         color="primary"
-                                        // checked={this.state.checked}
+                                        checked={_this.checkEnabled(item)}
                                         onChange={_this.handleChange(item.key)}
                                     />
                                 }

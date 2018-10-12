@@ -67,9 +67,12 @@ class MapComponent extends React.Component {
         const { filtering, filterBy } = this.state;
 
         let markers = ecopontos;
-        if (filtering && filterBy) {
+        if (filterBy) {
             markers = this.filterByService(filterBy)
         }
+
+        console.log(markers.length);
+        
 
         // const topBarHeight = window.jQuery(".top-bar").height();
         const screenHeight = window.jQuery("#root").height();
@@ -94,11 +97,12 @@ class MapComponent extends React.Component {
                 </AppBar>
                 {filtering ? (
                     <React.Fragment>
-                        <Search handle={(filter) => this.setState({ filterBy: filter })} />
+                        <Search
+                            filters={filterBy}
+                            handle={(filter) => this.setState({ filterBy: filter })}
+                        />
                         <ExpandLess className="text-center" onClick={this.toggleSearch} />
                     </React.Fragment>
-
-
                 ) : (
                         <ExpandMore className="text-center" onClick={this.toggleSearch} />
                     )}
