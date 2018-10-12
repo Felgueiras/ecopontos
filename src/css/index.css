@@ -824,6 +824,13 @@ body {
   margin-top:16px;
 }
 
+  /* ecopontos */
+:global(.wrapper) {
+  display: grid !important;
+  grid-template-columns: 50% 50%;
+  grid-gap: 10px;
+}
+
 /* bottom navigation */
 /* :global(.bottom-bar button) {
   background:mainColor;
@@ -866,9 +873,3 @@ body {
 	}
 
 
-  /* ecopontos */
-:global(.wrapper) {
-  display: grid !important;
-  grid-template-columns: 50% 50%;
-  grid-gap: 10px;
-}
